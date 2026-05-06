@@ -1,0 +1,489 @@
+{
+  "info": {
+    "name": "Blog System API",
+    "description": "Complete Blog System with Language, Paper, Blog, and BlogContent management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "TOKEN",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "LANGUAGE_ID",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "PAPER_ID",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "BLOG_ID",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Language Management",
+      "item": [
+        {
+          "name": "Create Language",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"English\",\n  \"code\": \"en\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/languages",
+              "host": ["{{BASE_URL}}"],
+              "path": ["languages"]
+            },
+            "description": "Create a new language (English, Telugu, Marathi, etc.)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Languages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/languages",
+              "host": ["{{BASE_URL}}"],
+              "path": ["languages"]
+            },
+            "description": "Get all active languages (Public)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Language",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"English (Updated)\",\n  \"isActive\": false\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/languages/{{LANGUAGE_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["languages", "{{LANGUAGE_ID}}"]
+            },
+            "description": "Update language details"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Language",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/languages/{{LANGUAGE_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["languages", "{{LANGUAGE_ID}}"]
+            },
+            "description": "Delete a language"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Paper Management",
+      "item": [
+        {
+          "name": "Create Paper",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"GS I\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/papers",
+              "host": ["{{BASE_URL}}"],
+              "path": ["papers"]
+            },
+            "description": "Create a new paper (GS I, GS II, GS III, etc.)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Papers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/papers",
+              "host": ["{{BASE_URL}}"],
+              "path": ["papers"]
+            },
+            "description": "Get all active papers (Public)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Paper",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"GS I (Updated)\",\n  \"isActive\": false\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/papers/{{PAPER_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["papers", "{{PAPER_ID}}"]
+            },
+            "description": "Update paper details"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Paper",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/papers/{{PAPER_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["papers", "{{PAPER_ID}}"]
+            },
+            "description": "Delete a paper"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Blog Management",
+      "item": [
+        {
+          "name": "Create Blog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "languageId",
+                  "value": "{{LANGUAGE_ID}}",
+                  "type": "text"
+                },
+                {
+                  "key": "paperId",
+                  "value": "{{PAPER_ID}}",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "India's Foreign Policy 2026",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Comprehensive analysis of India's foreign policy in 2026",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "2026-04-21",
+                  "type": "text"
+                },
+                {
+                  "key": "tableContent",
+                  "value": "[{\"title\":\"Introduction\",\"content\":\"<p>India's foreign policy has evolved significantly...</p>\",\"order\":1},{\"title\":\"Background\",\"content\":\"<p>Historical context of foreign relations...</p>\",\"order\":2},{\"title\":\"Key Developments\",\"content\":\"<p>Major developments in 2026...</p>\",\"order\":3},{\"title\":\"Conclusion\",\"content\":\"<p>Summary and future outlook...</p>\",\"order\":4}]",
+                  "type": "text"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "images",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "images",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/blogs",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs"]
+            },
+            "description": "Create a new blog with thumbnail, images, and table of contents"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Blogs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/blogs",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs"]
+            },
+            "description": "Get all active blogs (Public) - Returns latest 10 by default"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Blogs with Filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/blogs?languageId={{LANGUAGE_ID}}&paperId={{PAPER_ID}}&year=2026&month=4&limit=4",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs"],
+              "query": [
+                {
+                  "key": "languageId",
+                  "value": "{{LANGUAGE_ID}}"
+                },
+                {
+                  "key": "paperId",
+                  "value": "{{PAPER_ID}}"
+                },
+                {
+                  "key": "year",
+                  "value": "2026"
+                },
+                {
+                  "key": "month",
+                  "value": "4"
+                },
+                {
+                  "key": "limit",
+                  "value": "4"
+                }
+              ]
+            },
+            "description": "Get blogs filtered by language, paper, year, month with limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Blog with Contents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/blogs/{{BLOG_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs", "{{BLOG_ID}}"]
+            },
+            "description": "Get single blog details with all content sections (Public)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Blog",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Updated: India's Foreign Policy 2026",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "description",
+                  "value": "Updated description",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "date",
+                  "value": "2026-05-01",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "tableContent",
+                  "value": "[{\"title\":\"Introduction\",\"content\":\"<p>Updated intro...</p>\",\"order\":1},{\"title\":\"New Section\",\"content\":\"<p>New content...</p>\",\"order\":2}]",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "src": [],
+                  "disabled": true
+                },
+                {
+                  "key": "images",
+                  "type": "file",
+                  "src": [],
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/blogs/{{BLOG_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs", "{{BLOG_ID}}"]
+            },
+            "description": "Update blog (send only fields you want to update)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Blog",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/blogs/{{BLOG_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs", "{{BLOG_ID}}"]
+            },
+            "description": "Delete blog and all associated content"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Filters",
+      "item": [
+        {
+          "name": "Get All Filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/blogs/filters",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs", "filters"]
+            },
+            "description": "Get all available years and months (Public)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Filters by Language",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/blogs/filters?languageId={{LANGUAGE_ID}}",
+              "host": ["{{BASE_URL}}"],
+              "path": ["blogs", "filters"],
+              "query": [
+                {
+                  "key": "languageId",
+                  "value": "{{LANGUAGE_ID}}"
+                }
+              ]
+            },
+            "description": "Get years and months filtered by language (Public)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

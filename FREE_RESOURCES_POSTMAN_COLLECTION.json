@@ -1,0 +1,755 @@
+{
+  "info": {
+    "name": "Free Resources CMS API",
+    "description": "Complete API collection for Free Resources Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Categories",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "NCERT Books",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "NCERT Books for all classes",
+                  "type": "text"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": ["{{base_url}}"],
+              "path": ["categories"]
+            }
+          }
+        },
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/categories?isActive=true",
+              "host": ["{{base_url}}"],
+              "path": ["categories"],
+              "query": [
+                {
+                  "key": "isActive",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/categories/{{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["categories", "{{category_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "NCERT Books Updated",
+                  "type": "text"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/categories/{{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["categories", "{{category_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/categories/{{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["categories", "{{category_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. SubCategories",
+      "item": [
+        {
+          "name": "Create SubCategory",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Prelims",
+                  "type": "text"
+                },
+                {
+                  "key": "categoryId",
+                  "value": "{{category_id}}",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Preliminary Examination",
+                  "type": "text"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/subcategories",
+              "host": ["{{base_url}}"],
+              "path": ["subcategories"]
+            }
+          }
+        },
+        {
+          "name": "Get All SubCategories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/subcategories?categoryId={{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["subcategories"],
+              "query": [
+                {
+                  "key": "categoryId",
+                  "value": "{{category_id}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update SubCategory",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Prelims Updated",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/subcategories/{{subcategory_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["subcategories", "{{subcategory_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete SubCategory",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/subcategories/{{subcategory_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["subcategories", "{{subcategory_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Filters",
+      "item": [
+        {
+          "name": "Create Subject Filter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"SUBJECT\",\n  \"value\": \"History\",\n  \"categoryId\": \"{{category_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/filters",
+              "host": ["{{base_url}}"],
+              "path": ["filters"]
+            }
+          }
+        },
+        {
+          "name": "Create Class Filter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"CLASS\",\n  \"value\": \"10th\",\n  \"categoryId\": \"{{category_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/filters",
+              "host": ["{{base_url}}"],
+              "path": ["filters"]
+            }
+          }
+        },
+        {
+          "name": "Get All Filters",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/filters?categoryId={{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["filters"],
+              "query": [
+                {
+                  "key": "categoryId",
+                  "value": "{{category_id}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Filters by Category (Grouped)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/filters/category/{{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["filters", "category", "{{category_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Filter",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"Updated Value\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/filters/{{filter_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["filters", "{{filter_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Filter",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/filters/{{filter_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["filters", "{{filter_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Resources (PDFs)",
+      "item": [
+        {
+          "name": "Upload Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "NCERT History Class 10",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "India and the Contemporary World - II",
+                  "type": "text"
+                },
+                {
+                  "key": "categoryId",
+                  "value": "{{category_id}}",
+                  "type": "text"
+                },
+                {
+                  "key": "subject",
+                  "value": "History",
+                  "type": "text"
+                },
+                {
+                  "key": "class",
+                  "value": "10th",
+                  "type": "text"
+                },
+                {
+                  "key": "fileSize",
+                  "value": "15 MB",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/files",
+              "host": ["{{base_url}}"],
+              "path": ["files"]
+            }
+          }
+        },
+        {
+          "name": "Get Resources with Filters",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/files?categoryId={{category_id}}&subject=History&class=10th",
+              "host": ["{{base_url}}"],
+              "path": ["files"],
+              "query": [
+                {
+                  "key": "categoryId",
+                  "value": "{{category_id}}"
+                },
+                {
+                  "key": "subject",
+                  "value": "History"
+                },
+                {
+                  "key": "class",
+                  "value": "10th"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Resource by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/files/{{resource_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["files", "{{resource_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Resource",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Updated Title",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/files/{{resource_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["files", "{{resource_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Resource",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/files/{{resource_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["files", "{{resource_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Mock Tests",
+      "item": [
+        {
+          "name": "Create Mock Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"History Mock Test 1\",\n  \"description\": \"Test on Ancient Indian History\",\n  \"categoryId\": \"{{category_id}}\",\n  \"subject\": \"History\",\n  \"duration\": 120,\n  \"passingMarks\": 60,\n  \"questions\": [\n    {\n      \"question\": \"Who founded the Maurya Empire?\",\n      \"options\": [\"Chandragupta Maurya\", \"Ashoka\", \"Bindusara\", \"Bimbisara\"],\n      \"correctAnswer\": \"Chandragupta Maurya\",\n      \"explanation\": \"Chandragupta Maurya founded the Maurya Empire in 322 BCE.\",\n      \"marks\": 2,\n      \"negativeMarks\": 0.5\n    },\n    {\n      \"question\": \"The Battle of Plassey was fought in?\",\n      \"options\": [\"1757\", \"1764\", \"1857\", \"1947\"],\n      \"correctAnswer\": \"1757\",\n      \"marks\": 2,\n      \"negativeMarks\": 0.5\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/mock-tests",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests"]
+            }
+          }
+        },
+        {
+          "name": "Get All Mock Tests",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/mock-tests?categoryId={{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests"],
+              "query": [
+                {
+                  "key": "categoryId",
+                  "value": "{{category_id}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Mock Test by ID (Student View)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/mock-tests/{{test_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests", "{{test_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Mock Test by ID (Admin View)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/mock-tests/{{test_id}}?includeQuestions=true",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests", "{{test_id}}"],
+              "query": [
+                {
+                  "key": "includeQuestions",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Mock Test",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Test Title\",\n  \"duration\": 90\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/mock-tests/{{test_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests", "{{test_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Mock Test",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/mock-tests/{{test_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests", "{{test_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Test Attempts & Results",
+      "item": [
+        {
+          "name": "Attempt Mock Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"testId\": \"{{test_id}}\",\n  \"startedAt\": \"2025-04-17T10:00:00.000Z\",\n  \"timeTaken\": 5400,\n  \"answers\": [\n    {\n      \"questionIndex\": 0,\n      \"selectedAnswer\": \"Chandragupta Maurya\"\n    },\n    {\n      \"questionIndex\": 1,\n      \"selectedAnswer\": \"1757\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/mock-tests/attempt",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests", "attempt"]
+            }
+          }
+        },
+        {
+          "name": "Get User Results",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/mock-tests/results",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests", "results"]
+            }
+          }
+        },
+        {
+          "name": "Get Result by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/mock-tests/results/{{result_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["mock-tests", "results", "{{result_id}}"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api/resources",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "category_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "subcategory_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "filter_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "resource_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "test_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "result_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

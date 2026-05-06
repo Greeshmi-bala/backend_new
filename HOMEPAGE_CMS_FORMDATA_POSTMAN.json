@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "homepage-cms-formdata-api",
+		"name": "HomePage CMS - FormData API",
+		"description": "Complete API collection for HomePage CMS using FormData (multipart/form-data) for image uploads.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Get Homepage (Public)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Get all homepage sections. Public endpoint - no auth required."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Create Full Homepage (FormData)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SUPER_ADMIN_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section1_videoUrl",
+							"value": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+							"type": "text"
+						},
+						{
+							"key": "section2_iconImage",
+							"type": "file"
+						},
+						{
+							"key": "section2_text",
+							"value": "India's Best IAS Coaching",
+							"type": "text"
+						},
+						{
+							"key": "section2_backgroundImage",
+							"type": "file"
+						},
+						{
+							"key": "section3_title",
+							"value": "OUR TOPPERS",
+							"type": "text"
+						},
+						{
+							"key": "section3_subTitle",
+							"value": "Celebrating Success Stories",
+							"type": "text"
+						},
+						{
+							"key": "section3_toppers",
+							"value": "[{\"name\":\"Darshan Kumar\",\"rank\":\"AIR 08\",\"description\":\"GS Foundation Course 2025\"},{\"name\":\"Priya Sharma\",\"rank\":\"AIR 15\",\"description\":\"Optional - Geography\"}]",
+							"type": "text"
+						},
+						{
+							"key": "section3_toppers_images",
+							"type": "file"
+						},
+						{
+							"key": "section3_toppers_images",
+							"type": "file"
+						},
+						{
+							"key": "section4_title",
+							"value": "OUR LEARNING PROGRAMS",
+							"type": "text"
+						},
+						{
+							"key": "section4_subSections",
+							"value": "[{\"title\":\"Foundation Courses\",\"description\":\"Comprehensive preparation for UPSC CSE\",\"images\":[\"https://res.cloudinary.com/demo/image/upload/foundation1.jpg\",\"https://res.cloudinary.com/demo/image/upload/foundation2.jpg\",\"https://res.cloudinary.com/demo/image/upload/foundation3.jpg\"]}]",
+							"type": "text"
+						},
+						{
+							"key": "section5_title",
+							"value": "OUR CENTRES",
+							"type": "text"
+						},
+						{
+							"key": "section5_cards",
+							"value": "[{\"name\":\"Hyderabad\"},{\"name\":\"Delhi\"},{\"name\":\"Bengaluru\"}]",
+							"type": "text"
+						},
+						{
+							"key": "section5_cards_images",
+							"type": "file"
+						},
+						{
+							"key": "section5_cards_images",
+							"type": "file"
+						},
+						{
+							"key": "section5_cards_images",
+							"type": "file"
+						},
+						{
+							"key": "section6_title",
+							"value": "OUR STORY",
+							"type": "text"
+						},
+						{
+							"key": "section6_image",
+							"type": "file"
+						},
+						{
+							"key": "section6_description",
+							"value": "15+ years of excellence in civil services coaching",
+							"type": "text"
+						},
+						{
+							"key": "section6_subDescription",
+							"value": "Guiding thousands of aspirants to achieve their IAS dream",
+							"type": "text"
+						},
+						{
+							"key": "section6_stats",
+							"value": "[{\"number\":\"50,000+\",\"text\":\"Students Trained\"},{\"number\":\"500+\",\"text\":\"Final Selections\"},{\"number\":\"15+\",\"text\":\"Years of Excellence\"}]",
+							"type": "text"
+						},
+						{
+							"key": "section7_title",
+							"value": "WATCH OUR VIDEOS",
+							"type": "text"
+						},
+						{
+							"key": "section7_videos",
+							"value": "[{\"videoUrl\":\"https://www.youtube.com/watch?v=abc123\",\"thumbnail\":\"https://res.cloudinary.com/demo/image/upload/video1-thumb.jpg\"}]",
+							"type": "text"
+						},
+						{
+							"key": "section7_videos_thumbnails",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Create full homepage with all 7 sections using FormData.\n\n**Instructions:**\n1. Select files for all 'file' type fields\n2. Text fields are pre-filled\n3. Arrays are sent as JSON strings\n4. Multiple files use same key name"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Update Only Section 3 - Toppers (FormData)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SUPER_ADMIN_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section3_title",
+							"value": "OUR TOPPERS 2026",
+							"type": "text"
+						},
+						{
+							"key": "section3_subTitle",
+							"value": "New Batch Success Stories",
+							"type": "text"
+						},
+						{
+							"key": "section3_toppers",
+							"value": "[{\"name\":\"Amit Patel\",\"rank\":\"AIR 05\",\"description\":\"GS Foundation Course 2026\"},{\"name\":\"Sneha Reddy\",\"rank\":\"AIR 12\",\"description\":\"Optional - Sociology\"},{\"name\":\"Vikram Singh\",\"rank\":\"AIR 18\",\"description\":\"Optional - History\"}]",
+							"type": "text"
+						},
+						{
+							"key": "section3_toppers_images",
+							"type": "file"
+						},
+						{
+							"key": "section3_toppers_images",
+							"type": "file"
+						},
+						{
+							"key": "section3_toppers_images",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Update ONLY the Toppers section (Section 3).\n\n**Key Feature:** Uses $set operator - only section3 updates, all others remain unchanged!\n\n**Instructions:**\n1. Select 3 topper image files\n2. Update toppers JSON with new data\n3. Send request"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Update Only Section 7 - YouTube Videos (FormData)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SUPER_ADMIN_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section7_title",
+							"value": "LATEST VIDEOS",
+							"type": "text"
+						},
+						{
+							"key": "section7_videos",
+							"value": "[{\"videoUrl\":\"https://www.youtube.com/watch?v=xyz789\",\"thumbnail\":\"https://res.cloudinary.com/demo/image/upload/new-video1.jpg\"},{\"videoUrl\":\"https://www.youtube.com/watch?v=uvw012\",\"thumbnail\":\"https://res.cloudinary.com/demo/image/upload/new-video2.jpg\"},{\"videoUrl\":\"https://www.youtube.com/watch?v=rst345\",\"thumbnail\":\"https://res.cloudinary.com/demo/image/upload/new-video3.jpg\"}]",
+							"type": "text"
+						},
+						{
+							"key": "section7_videos_thumbnails",
+							"type": "file"
+						},
+						{
+							"key": "section7_videos_thumbnails",
+							"type": "file"
+						},
+						{
+							"key": "section7_videos_thumbnails",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Update ONLY YouTube Videos section.\n\n**Instructions:**\n1. Select 3 thumbnail files\n2. Update videos JSON with new URLs\n3. Send request"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Update Only Section 6 - Story & Stats (FormData)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SUPER_ADMIN_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section6_title",
+							"value": "OUR JOURNEY",
+							"type": "text"
+						},
+						{
+							"key": "section6_image",
+							"type": "file"
+						},
+						{
+							"key": "section6_description",
+							"value": "20+ years of excellence in civil services coaching",
+							"type": "text"
+						},
+						{
+							"key": "section6_subDescription",
+							"value": "Empowering aspirants to achieve their dreams since 2006",
+							"type": "text"
+						},
+						{
+							"key": "section6_stats",
+							"value": "[{\"number\":\"75,000+\",\"text\":\"Students Trained\"},{\"number\":\"750+\",\"text\":\"Final Selections\"},{\"number\":\"20+\",\"text\":\"Years of Excellence\"},{\"number\":\"75+\",\"text\":\"Expert Faculty\"}]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Update ONLY Story & Stats section.\n\n**Instructions:**\n1. Select new story image\n2. Update stats JSON\n3. Send request"
+			},
+			"response": []
+		},
+		{
+			"name": "6. Update Only Section 5 - Centres (FormData)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SUPER_ADMIN_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section5_title",
+							"value": "OUR CENTRES ACROSS INDIA",
+							"type": "text"
+						},
+						{
+							"key": "section5_cards",
+							"value": "[{\"name\":\"Hyderabad\"},{\"name\":\"Delhi\"},{\"name\":\"Bengaluru\"},{\"name\":\"Chennai\"}]",
+							"type": "text"
+						},
+						{
+							"key": "section5_cards_images",
+							"type": "file"
+						},
+						{
+							"key": "section5_cards_images",
+							"type": "file"
+						},
+						{
+							"key": "section5_cards_images",
+							"type": "file"
+						},
+						{
+							"key": "section5_cards_images",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Update ONLY Centres section.\n\n**Instructions:**\n1. Select 4 centre image files\n2. Update cards JSON with new centres\n3. Send request"
+			},
+			"response": []
+		},
+		{
+			"name": "7. Update Only Section 2 - Hero (FormData)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SUPER_ADMIN_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section2_iconImage",
+							"type": "file"
+						},
+						{
+							"key": "section2_text",
+							"value": "Transform Your IAS Dream Into Reality",
+							"type": "text"
+						},
+						{
+							"key": "section2_backgroundImage",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Update ONLY Hero section.\n\n**Instructions:**\n1. Select icon and background images\n2. Update hero text\n3. Send request"
+			},
+			"response": []
+		},
+		{
+			"name": "8. Test Unauthorized (Student Token)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{STUDENT_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section3_title",
+							"value": "Test",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Test access control with Student token.\n\n**Expected:** 403 Forbidden\n```json\n{\n  \"message\": \"Access denied. Insufficient permissions.\",\n  \"required\": [\"super_admin\"],\n  \"current\": \"student\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "9. Test No Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "section3_title",
+							"value": "Test",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/homepage",
+					"host": ["{{BASE_URL}}"],
+					"path": ["homepage"]
+				},
+				"description": "Test access without authentication.\n\n**Expected:** 401 Unauthorized\n```json\n{\n  \"message\": \"Not authorized to access this route\"\n}\n```"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		},
+		{
+			"key": "SUPER_ADMIN_TOKEN",
+			"value": "your-super-admin-token-here",
+			"type": "string"
+		},
+		{
+			"key": "STUDENT_TOKEN",
+			"value": "your-student-token-here",
+			"type": "string"
+		}
+	]
+}
