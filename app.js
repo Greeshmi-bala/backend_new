@@ -45,6 +45,7 @@ connectDB();
 
 // Middleware
 app.use(helmet()); // Security headers
+
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
@@ -55,6 +56,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
+      // Allow requests with no origin (Postman/mobile apps)
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -67,9 +69,8 @@ app.use(
   })
 );
 
-app.options("*", cors());
-app.use(express.json({ limit: '10mb' })); // Parse JSON bodies
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true }));
 
 // Rate limiting for OTP endpoints
 const otpLimiter = rateLimit({
