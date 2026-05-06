@@ -46,7 +46,10 @@ connectDB();
 // Middleware
 app.use(helmet()); // Security headers
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: [
+    "http://localhost:3000",
+    "https://sriram-ias-student-frontend-updated.vercel.app"
+  ],
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' })); // Parse JSON bodies
