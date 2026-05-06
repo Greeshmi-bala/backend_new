@@ -45,13 +45,29 @@ connectDB();
 
 // Middleware
 app.use(helmet()); // Security headers
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://sriram-ias-student-frontend-updated.vercel.app"
-  ],
-  credentials: true
-}));
+aconst allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://sriram-ias-student-frontend-updated.vercel.app",
+  "https://sriram-ias-student-frontend-pro.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(Not allowed by CORS: ${origin}));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.options("*", cors());
 app.use(express.json({ limit: '10mb' })); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
